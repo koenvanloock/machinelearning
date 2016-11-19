@@ -1,4 +1,4 @@
-package models
+package main.scala.models
 
 case class House(
                   id: String,

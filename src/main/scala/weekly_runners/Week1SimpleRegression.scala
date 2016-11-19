@@ -1,21 +1,17 @@
-package weekly_runners
+package main.scala.weekly_runners
 
-import helpers.CsvParser
-import ml_functions.SimpleRegression
-import models.House
+import main.scala.helpers.CsvParser
+import main.scala.ml_functions.SimpleRegression
+import main.scala.models.House
 
 
 object Week1SimpleRegression {
-
-
-
-
   def main(args: Array[String]) {
 
-    val fileName = "kc_house_train_data.csv"
-    val testFile = "kc_house_test_data.csv"
-    val trainHouses: List[House] = CsvParser.parse(fileName, houseParser)
-    val testHouses: List[House] =  CsvParser.parse(testFile, houseParser)
+    val fileName = "main/resources/kc_house_train_data.csv"
+    val testFile = "main/resources/kc_house_test_data.csv"
+    val trainHouses: List[House] = CsvParser.parse(fileName, HouseParser.houseParser)
+    val testHouses: List[House] =  CsvParser.parse(testFile, HouseParser.houseParser)
     val input = trainHouses.map(_.sqft_living)
     val output = trainHouses.map(_.price)
 
@@ -44,32 +40,5 @@ object Week1SimpleRegression {
     println(s"The best model is $best.")
   }
 
-  def houseParser(line: String) = {
 
-    val dataLine = line.split(",")
-
-    House(
-      dataLine.head,
-      dataLine.drop(1).head,
-      dataLine.drop(2).head.toDouble,
-      dataLine.drop(3).head.toDouble,
-      dataLine.drop(4).head.toDouble,
-      dataLine.drop(5).head.toDouble,
-      dataLine.drop(6).head.toInt,
-      dataLine.drop(7).head,
-      dataLine.drop(8).head.toInt,
-      dataLine.drop(9).head.toInt,
-      dataLine.drop(10).head.toInt,
-      dataLine.drop(11).head.toInt,
-      dataLine.drop(12).head.toInt,
-      dataLine.drop(13).head.toInt,
-      dataLine.drop(14).head.toInt,
-      dataLine.drop(15).head.toInt,
-      dataLine.drop(16).head,
-      dataLine.drop(17).head.toDouble,
-      dataLine.drop(18).head.toDouble,
-      dataLine.drop(19).head.toDouble,
-      dataLine.drop(20).head.toDouble
-    )
-  }
 }

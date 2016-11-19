@@ -1,8 +1,6 @@
-package helpers
+package main.scala.helpers
 
 import java.io.{InputStreamReader, File}
-
-import models.House
 
 import scala.io.Source
 

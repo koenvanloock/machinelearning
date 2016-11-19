@@ -1,6 +1,7 @@
-package ml_functions
+package main.scala.ml_functions
 
-import models.SlopeAndIntercept
+import main.scala.models.SlopeAndIntercept
+
 
 object SimpleRegression {
 

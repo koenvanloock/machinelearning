@@ -1,11 +1,11 @@
-package ml_functions
+package main.scala.ml_functions
 
-import models.WeightAndPartial
+import main.scala.models.WeightAndPartial
 
 object MultipleRegression {
 
 
-  def calculateGradientDescent(input: Vector[Vector[Double]], results: Vector[Double], tolerance: Double, stepsize:Double, magnitude: Double = Double.MaxValue, currentWeights: Vector[Double], iteration: Int=0): Vector[Double] = {
+  def calculateGradientDescent(input: Vector[Vector[Double]], results: Vector[Double], tolerance: Double, stepsize:Double, currentWeights: Vector[Double], magnitude: Double = Double.MaxValue, iteration: Int=0): Vector[Double] = {
     if (magnitude < tolerance) {
       currentWeights
     } else {
@@ -15,7 +15,7 @@ object MultipleRegression {
            val newWeights = resultWeightAndPartials.map(_.weight)
           val newMagnitude = Math.sqrt(resultWeightAndPartials.map(x => x.partial * x.partial).sum)
       println(s"iteration $iteration magnitude at: $newMagnitude weights: (${newWeights.mkString(",")})")
-      calculateGradientDescent(input, results, tolerance, stepsize,newMagnitude, newWeights, iteration+1)
+      calculateGradientDescent(input, results, tolerance, stepsize, newWeights, newMagnitude, iteration+1)
     }
   }
 
@@ -34,12 +34,12 @@ object MultipleRegression {
   }
 
   def updateSingleFeature(results: Vector[Double], featureValues: Vector[Double], currentWeight: Double, stepsize: Double): WeightAndPartial = {
-    val partial = -2 * featureValues
+    val derivative = -2 * featureValues
                 .zip(results)
                 .map{ case(featureValue, result) => featureValue *(result - (featureValue * currentWeight))}
                 .sum
-    val newWeight = currentWeight - stepsize * partial
-    WeightAndPartial(newWeight, partial)
+    val newWeight = currentWeight - stepsize * derivative
+    WeightAndPartial(newWeight, derivative)
   }
 
   def innerProduct(vectorA: Vector[Double], vectorB: Vector[Double]): Double =
