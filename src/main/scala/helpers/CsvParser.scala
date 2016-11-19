@@ -2,7 +2,7 @@ package helpers
 
 import java.io.{InputStreamReader, File}
 
-import week1models.House
+import models.House
 
 import scala.io.Source
 

@@ -2,7 +2,7 @@ package weekly_runners
 
 import helpers.CsvParser
 import ml_functions.SimpleRegression
-import week1models.House
+import models.House
 
 
 object Week1SimpleRegression {

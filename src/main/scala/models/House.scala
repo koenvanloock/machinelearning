@@ -1,4 +1,4 @@
-package week1models
+package models
 
 case class House(
                   id: String,

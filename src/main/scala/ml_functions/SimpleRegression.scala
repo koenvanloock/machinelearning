@@ -1,6 +1,6 @@
 package ml_functions
 
-import week1models.SlopeAndIntercept
+import models.SlopeAndIntercept
 
 object SimpleRegression {
 

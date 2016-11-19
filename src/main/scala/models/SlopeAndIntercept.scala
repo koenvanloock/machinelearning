@@ -1,3 +1,3 @@
-package week1models
+package models
 
 case class SlopeAndIntercept(slope: Double, intercept: Double)
